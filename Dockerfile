@@ -5,7 +5,13 @@ ENV SOURCES /go/src/
 
 COPY . ${SOURCES}
 
-RUN cd ${SOURCES} && CGO_ENABLED=0 go install
+RUN pwd && ls -al
+
+WORKDIR ${SOURCES}/microservice
+
+RUN pwd && ls -al
+
+RUN CGO_ENABLED=0 go install
 
 ENV PORT 8080
 EXPOSE 8080
