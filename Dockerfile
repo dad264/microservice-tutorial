@@ -1,15 +1,11 @@
-FROM golang:1.7.4
+FROM golang:1.7.4-alpine
 LABEL MAINTAINER="dad264@psu.edu"
 
-ENV SOURCES /go/src/
+ENV SOURCES /go/src/microservice/
 
 COPY . ${SOURCES}
 
-RUN pwd && ls -al
-
-WORKDIR ${SOURCES}/microservice
-
-RUN pwd && ls -al
+WORKDIR ${SOURCES}
 
 RUN CGO_ENABLED=0 go install
 
